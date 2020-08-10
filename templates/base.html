@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{% block title %}{% endblock %}</title>
+        <!--- Icon --->
+        <link rel="icon" href="{% static 'img/icon-black.svg' %}">
+        <!--- Bulma CDN --->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+        <!--- FontAwesome CDN --->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+
+        {% block head %}
+        {% endblock %}
+    </head>
+    <body>
+        <nav class="navbar is-black is-size-4 has-text-weight-semibold">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="{% url 'posts:home' %}">
+                    <img src="{% static 'img/icon.svg' %}" alt="" width="35">
+                </a>
+
+                <a class="navbar-burger burger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </a>
+            </div>
+            <div class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="{% url 'posts:home' %}">
+                        Home
+                    </a>
+                    <a class="navbar-item" href="{% url 'posts:browse' %}">
+                        Browse
+                    </a>
+                    <a class="navbar-item" href="{% url 'posts:create' %}">
+                        Create
+                    </a>
+                </div>
+            </div>
+            <script src="{% static 'js/navbar.js' %}"></script>
+        </nav>
+
+        {% block body %}
+
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+    <!--- p5.js --->
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.1.9/lib/p5.js"></script>
+    <style>
+        #canvas-container canvas {
+            border: 1px solid black;
+        }
+    </style>
+{% endblock %}
+
+{% block title %}
+    Create
+{% endblock %}
+
+{% block body %}
+    <section class="section container">
+        <form enctype="multipart/form-data" action="" method="POST">
+            {% csrf_token %}
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input class="input" name="title" type="text" placeholder="Title" required autocomplete="off">
+                </div>
+            </div>
+            <div id="canvas-container" style="width: 60%; height: 60%;">
+                <div class="field is-grouped">
+                    <div id="eye-width">
+                        <label class="label">Eye Width</label>
+                    </div>
+                    <div id="eye-height">
+                        <label class="label">Eye Height</label>
+                    </div>
+                </div>
+                <div class="field is-grouped">
+                    <div id="happiness">
+                        <label class="label">Happiness</label>
+                    </div>
+                    <div id="happy-width">
+                        <label class="label">Smile Width</label>
+                    </div>
+                </div>
+            </div>
+            <input name="eyeWidth" type="hidden" value="">
+            <input name="eyeHeight" type="hidden" value="">
+            <input name="happiness" type="hidden" value="">
+            <input name="smileWidth" type="hidden" value="">
+            <label class="label">If you want to save your masterpiece, right click the face, and save it as an image.</label>
+            <div class="field">
+                <div class="control">
+                    <input class="button is-dark" type="submit" value="Publish">
+                </div>
+            </div>
+        </form>
+        <script src="{% static 'js/sketch.js' %}"></script>
+    </section>
+{% endblock %}

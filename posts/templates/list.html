@@ -1,0 +1,53 @@
+{% load humanize %}
+
+{% for smile in list %}
+    <div class="hero is-black">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title"><a class="has-text-white" href="{% url 'posts:detail' pk=smile.pk %}">{{ smile.title }}</a></h1>
+                <p class="subtitle">{{ smile.published | naturaltime }}</p>
+            </div>
+        </div>
+    </div>
+    <br>
+{% endfor %}
+{% if list|length != 0 %}
+    <nav class="pagination is-small" role="navigation" aria-label="pagination">
+        <ul class="pagination-list">
+            {% if page != 1 %}
+                {# Shortcut to first #}
+                {% if page|add:-1 != 1 %}
+                    <li><a class="pagination-link" href="{% url 'posts:browseHot' page=1 %}">1</a></li>
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                {% endif%}
+                {# Previous Page #}
+                {% with prev=page|add:-1 %}
+                    <li><a class="pagination-link" href="{% url 'posts:browseHot' page=prev %}">{{ prev }}</a></li>
+                {% endwith %}
+            {% endif %}
+            {# Current #}
+            <li><a class="pagination-link" style="background-color: black; color: white;" href="{% url 'posts:browseHot' page=page %}">{{ page }}</a></li>
+            {% if page != max_page %}
+                {# Next Page #}
+                {% with next=page|add:1 %}
+                    <li><a class="pagination-link" href="{% url 'posts:browseHot' page=next %}">{{ next }}</a></li>
+                {% endwith %}
+                {# Shortcut to last #}
+                {% if page|add:1 != max_page  %}
+                    <li><span class="pagination-ellipsis">&hellip;</span></li>
+                    <li><a class="pagination-link" href="{% url 'posts:browseHot' page=max_page %}">{{ max_page }}</a></li>
+                {% endif%}
+            {% endif %}
+        </ul>
+    </nav>
+{% else %}
+    <h1 class="title has-text-centered">
+        Looks Like There's Nothing Here
+        <p class="subtitle">
+            <a href="{% url 'posts:create' %}">Make A Face</a>
+        </p>
+        <span class="icon has-text-centered is-size-1">
+            <i class="far fa-frown"></i>
+        </span>
+    </h1>
+{% endif %}

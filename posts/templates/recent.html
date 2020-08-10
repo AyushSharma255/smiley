@@ -1,0 +1,15 @@
+{% extends "browse.html" %}
+
+{% block title %}
+    Browse By Recent
+{% endblock %}
+
+{% block recent %}
+    is-active
+{% endblock %}
+
+{% block items %}
+    <section class="section container">
+        {% include "list.html" %}
+    </section>
+{% endblock %}
