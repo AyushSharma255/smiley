@@ -57,9 +57,6 @@ def paginator(*options):
 
 
 
-@paginator("-comment_count")
-def browseTop(request, page):
-    pass
 
 
 @paginator("-published")
