@@ -12,7 +12,7 @@ class Face(models.Model):
     happiness = models.IntegerField(default=50)
     smileWidth = models.IntegerField(default=5)
 	
-	@property.getter()
+	@property.getter
 	def comment_count(self):
 		return len(self.comments.all())
 
