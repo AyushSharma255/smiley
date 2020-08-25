@@ -7,7 +7,6 @@
 {% block body %}
     <div class="tabs is-left">
         <ul>
-            <li class="{% block hot %}{% endblock %}"><a href="{% url 'posts:browseHot' page=1 %}">Hot</a></li>
             <li class="{% block top %}{% endblock %}"><a href="{% url 'posts:browseTop' page=1 %}">Top</a></li>
             <li class="{% block recent %}{% endblock %}"><a href="{% url 'posts:browseRecent' page=1 %}">Recent</a></li>
         </ul>
