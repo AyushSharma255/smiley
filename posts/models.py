@@ -12,9 +12,9 @@ class Face(models.Model):
     happiness = models.IntegerField(default=50)
     smileWidth = models.IntegerField(default=5)
 	
-	@property.getter
-	def comment_count(self):
-		return len(self.comments.all())
+    @property.getter
+    def comment_count(self):
+        return len(self.comments.all())
 
     def __str__(self):
         return self.title
