@@ -47,7 +47,8 @@ def paginator(*options):
             return render(request, (func.__name__[6:] + ".html").lower(), context={
                 "max_page": max_page,
                 "page": page,
-                "list": list
+                "list": list,
+				"order": " ".join(options)
             })
 
         return wrapper

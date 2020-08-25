@@ -1,6 +1,6 @@
 {% load humanize %}
 
-{% for smile in list %}
+{% for smile in list | dictsort:order %}
     <div class="hero is-black">
         <div class="hero-body">
             <div class="container">
