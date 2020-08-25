@@ -55,7 +55,7 @@ def paginator(*options):
     return paginator_decorator
 
 
-@paginator("-published", "-comments")
+@paginator("-comments", "-published")
 def browseHot(request, page):
     pass
 
