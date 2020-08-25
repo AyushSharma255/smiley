@@ -42,12 +42,12 @@ def paginator(*options):
                 if item not in _set:
                     _set.append(item)
 
-            list = list(Paginator(_set, 3).page(page))
+            _list = list(Paginator(_set, 3).page(page))
             max_page = Paginator(_set, 3).num_pages
             return render(request, (func.__name__[6:] + ".html").lower(), context={
                 "max_page": max_page,
                 "page": page,
-                "list": list,
+                "list": _list,
 				"order": " ".join(options)
             })
 
