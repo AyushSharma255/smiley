@@ -57,7 +57,7 @@ def paginator(*options):
 
 
 
-@paginator("-comments")
+@paginator("-comment_count")
 def browseTop(request, page):
     pass
 
